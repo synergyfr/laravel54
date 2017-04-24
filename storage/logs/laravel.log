@@ -1,0 +1,27 @@
+[2017-01-27 14:35:26] local.ERROR: exception 'Symfony\Component\Console\Exception\RuntimeException' with message 'Not enough arguments (missing: "name").' in C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Input\Input.php:84
+Stack trace:
+#0 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Command\Command.php(257): Symfony\Component\Console\Input\Input->validate()
+#1 C:\Program Files (x86)\Ampps\www\laravel54\vendor\laravel\framework\src\Illuminate\Console\Command.php(168): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#2 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(826): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Foundation\Console\TestMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 C:\Program Files (x86)\Ampps\www\laravel54\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(123): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Program Files (x86)\Ampps\www\laravel54\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
+[2017-01-27 14:39:15] local.ERROR: exception 'Symfony\Component\Console\Exception\CommandNotFoundException' with message 'Command "phpunit" is not defined.' in C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php:545
+Stack trace:
+#0 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(186): Symfony\Component\Console\Application->find('phpunit')
+#1 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 C:\Program Files (x86)\Ampps\www\laravel54\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(123): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Program Files (x86)\Ampps\www\laravel54\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 {main}  
+[2017-01-27 15:48:53] local.ERROR: exception 'Symfony\Component\Console\Exception\RuntimeException' with message 'Not enough arguments (missing: "name").' in C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Input\Input.php:84
+Stack trace:
+#0 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Command\Command.php(257): Symfony\Component\Console\Input\Input->validate()
+#1 C:\Program Files (x86)\Ampps\www\laravel54\vendor\laravel\framework\src\Illuminate\Console\Command.php(168): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#2 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(826): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(189): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Foundation\Console\TestMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 C:\Program Files (x86)\Ampps\www\laravel54\vendor\symfony\console\Application.php(120): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 C:\Program Files (x86)\Ampps\www\laravel54\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php(123): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 C:\Program Files (x86)\Ampps\www\laravel54\artisan(36): Illuminate\Foundation\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 {main}  
