@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\UserWasBanned;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +14,27 @@
 */
 
 Route::get('/', function () {
+	
+	//Event::fire('UserWasBanned', []); // or new up class
+	//$user = new App\User;
+
+	//event(new UserWasBanned($user));
+
+	//dd(app('Illuminate\Contracts\Config\Repository')); // id name or class as string
+	//dd(Config::get('database.default'));
+	//dd(app('Illuminate\Config\Repository')); // concrete class
+	//dd(app('Illuminate\Config\Repository')['database']['default']);
+	// dd(app('Illuminate\Contracts\Config\Repository')['database']['default']);
+	// dd(app('config')['database']['default']);
+	// dd(app()['config']['database']['default']); // Array Access
+	// when access key, call ofsetGet
+	// App::make('config')
+
     return view('welcome');
 });
+
+// get()
+Route::get('/test', 'WelcomeController@test');
 
 Route::get('/cache', function() {
 	return cache('key');

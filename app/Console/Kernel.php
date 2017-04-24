@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        
+        //'App\Console\Commands\Inspire'
     ];
 
     /**
@@ -24,8 +25,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+
+        // * * * *
+        
+        // execute artisan command - php artisan command inspire
+        // $schedule->command('inspire')->hourly();
+
+        // execute command
+        // $schedule->exec("touch foo.txt")->everyFiveMinutes();
+
+        // for email, need to save first
+        //$schedule->command('laracasts:clear-history')->monthly()->sendOutputTo('path/to/file')->emailOutputTo('');
+        //$schedule->command('laracasts:daily-report')->dailyAt('23:55');
+
+        // ->thenPing() ping a URL
     }
 
     /**

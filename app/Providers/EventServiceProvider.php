@@ -12,10 +12,17 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
+
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
+        
+        //'App\Events\SomeEvent' => [
+        //    'App\Listeners\EventListener',
+        //],
+
+        'App\Events\UserWasBanned' => [
+            'App\Listeners\EmailBanNotification'
+            // 'App\Listeners\CancelSubscription'
+        ]
     ];
 
     /**
