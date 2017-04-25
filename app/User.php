@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'plan' 
     ];
 
     /**
@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isSubscribed($plan = null) {
+        // return $this->stripe_id;
+
+        if ($plan) {
+            return $this->plan == $plan;
+        }
+
+        return !! $this->plan; // strict boolean ?
+    }
+
 }

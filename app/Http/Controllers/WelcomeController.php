@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Config\Repository;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class WelcomeController extends Controller
 {
@@ -15,6 +16,10 @@ class WelcomeController extends Controller
 	public function __construct(Repository $config) {
 
 		$this->config = $config;
+	}
+
+	public function index() {
+		return view('welcome');
 	}
 
     public function test(Repository $config) {
@@ -32,5 +37,29 @@ class WelcomeController extends Controller
  		// config helper function
  		return config('database.default'); // recommended and clean
 
+    }
+
+    public function login() {
+
+    	\App\User::truncate();
+
+    	$user = \App\User::forceCreate([
+			'name'     => 'JohnDoe',
+			'email'    => 'john@example.com',
+			'password' => bcrypt('password'),
+			'plan' 	   => 'yearly'
+		]);
+
+		Auth::login($user);
+
+		return redirect('/');
+    }
+
+    public function subscriptionPage() {
+    	return 'Subscription only page for the yearly plan.';
+    }
+
+    public function cache() {
+    	return cache('key');
     }
 }

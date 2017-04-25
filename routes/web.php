@@ -13,7 +13,9 @@ use App\Events\UserWasBanned;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'WelcomeController@index'
+
+	//function () {
 	
 	//Event::fire('UserWasBanned', []); // or new up class
 	//$user = new App\User;
@@ -30,12 +32,16 @@ Route::get('/', function () {
 	// when access key, call ofsetGet
 	// App::make('config')
 
-    return view('welcome');
-});
+    // return view('welcome');
+//}
+
+);
 
 // get()
 Route::get('/test', 'WelcomeController@test');
 
-Route::get('/cache', function() {
-	return cache('key');
-});
+Route::get('login', 'WelcomeController@login');
+
+Route::get('/subscription-only', 'WelcomeController@subscriptionPage')->middleware('subscribed:yearly');
+
+Route::get('/cache', 'WelcomeController@cache');
