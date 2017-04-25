@@ -8,5 +8,9 @@ class Lesson extends Model
 {
     //
     public $timestamps = false;
+
+    protected $fillable = ['title', 'body'];
+
+    protected $hidden = ['title'];
     
 }

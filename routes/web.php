@@ -47,3 +47,9 @@ Route::get('/subscription-only', 'WelcomeController@subscriptionPage')->middlewa
 Route::get('/cache', 'WelcomeController@cache');
 
 Route::get('reports', 'ReportsController@index');
+
+// API
+
+Route::group(['prefix' => 'api/v1'], function() {
+	Route::resource('lessons', 'LessonsController');
+});
