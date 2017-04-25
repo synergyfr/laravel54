@@ -19,7 +19,8 @@ class WelcomeController extends Controller
 	}
 
 	public function index() {
-		return view('welcome');
+		return view('welcome')->with('user', \App\User::first());
+		// regular expressions
 	}
 
     public function test(Repository $config) {

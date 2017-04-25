@@ -105,6 +105,13 @@
 
             </div>
         </div>
+
+
+
+        @ago($user)
+
+        {{-- @hello --}}
+
     </body>
 
 

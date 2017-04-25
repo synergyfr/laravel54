@@ -32,7 +32,7 @@ Route::get('/', 'WelcomeController@index'
 	// when access key, call ofsetGet
 	// App::make('config')
 
-    // return view('welcome');
+    //return view('welcome')->with('user', App::user()->first());
 //}
 
 );
@@ -45,3 +45,5 @@ Route::get('login', 'WelcomeController@login');
 Route::get('/subscription-only', 'WelcomeController@subscriptionPage')->middleware('subscribed:yearly');
 
 Route::get('/cache', 'WelcomeController@cache');
+
+Route::get('reports', 'ReportsController@index');
