@@ -28,6 +28,7 @@ $factory->define(App\Lesson::class, function (Faker\Generator $faker) {
 	return [
 		'title'    	   => $faker->sentence(4), // can pass
 		'body'  	   => $faker->paragraph(5), // Carbon now
+		'some_bool'	   => $faker->boolean()
 		//'published_at' => $faker->dateTime()
 	];
 });

@@ -17,8 +17,9 @@ class CreateLessonsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('body');
+            $table->boolean('some_bool');
             //$table->timestamp('published_at');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 

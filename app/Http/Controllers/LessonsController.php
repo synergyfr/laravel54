@@ -4,8 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LessonsController extends Controller
+use Response;
+
+use App\CompanyExample\Transformers\LessonTransformer;
+
+class LessonsController extends ApiController
 {
+
+    /**
+
+    * @var CompanyExample\Transformers\LessonTransformer
+
+    */
+
+    protected $lessonTransformer;
+
+    function __construct(LessonTransformer $lessonTransformer)
+    {
+        $this->lessonTransformer = $lessonTransformer;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,28 +41,16 @@ class LessonsController extends Controller
         // 4. if structure changes, could affect all people quering the api
         // 4. No way to signal headers/response codes
 
-        return \App\Lesson::all(); // really bad practice
-    }
+        $lessons = \App\Lesson::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        // get_class()
+        // get_class_methods()
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        // 200 default error code value - set the status code with chain if you want to
+        return $this->respond([
+            'data' => $this->lessonTransformer->transformCollection($lessons->all())
+        ]);
+
     }
 
     /**
@@ -55,40 +61,19 @@ class LessonsController extends Controller
      */
     public function show($id)
     {
-        //
+        $lesson = \App\Lesson::find($id);
+
+        if (! $lesson) {
+
+            return $this->respondNotFound('Lesson does not exist.');
+
+        }
+
+        // 200 default error code value - set the status code with chain if you want to
+        return $this->respond([
+            'data' => $this->lessonTransformer->transform($lesson)
+        ]);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
