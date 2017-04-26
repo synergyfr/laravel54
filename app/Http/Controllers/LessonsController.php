@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Response;
 
+use Input;
+
 use App\CompanyExample\Transformers\LessonTransformer;
 
 class LessonsController extends ApiController
@@ -21,7 +23,12 @@ class LessonsController extends ApiController
 
     function __construct(LessonTransformer $lessonTransformer)
     {
-        $this->lessonTransformer = $lessonTransformer;
+        $this->lessonTransformer = $lessonTransformer; 
+
+        // if you use beforeFilter in the constuctor, will trigger for every route in this controller
+        // must use middleware now
+
+        // $this->beforeFilter('auth.basic', ['on' => 'post']);
     }
 
     /**
@@ -73,6 +80,32 @@ class LessonsController extends ApiController
         return $this->respond([
             'data' => $this->lessonTransformer->transform($lesson)
         ]);
+
+    }
+
+    public function store() {
+        
+        // need to be authorized to create a lesson
+        // if you use authentication, you must use SSL !
+
+        $this->middleware('auth.basic');
+
+        if ( ! Input::get('title') or ! Input::get('body')) {
+
+            // 400 - bad request (this)
+            // 403 - forbidden
+            // 422 - unprocessable entity (this)
+
+            // response, number, message
+
+            return $this->setStatusCode(422)->respondWithError('Parameters failed validation for a lesson.');
+
+
+        }
+
+        //if ( !$request->get('title') || !$request->get('body') ) {
+
+        //}
 
     }
 
