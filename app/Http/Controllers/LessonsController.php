@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use Response;
 
-use Input;
+use App\Lesson;
+
+use Illuminate\Support\Facades\Input;
 
 use App\CompanyExample\Transformers\LessonTransformer;
 
@@ -23,12 +25,10 @@ class LessonsController extends ApiController
 
     function __construct(LessonTransformer $lessonTransformer)
     {
-        $this->lessonTransformer = $lessonTransformer; 
+        $this->lessonTransformer = $lessonTransformer;
 
-        // if you use beforeFilter in the constuctor, will trigger for every route in this controller
-        // must use middleware now
-
-        // $this->beforeFilter('auth.basic', ['on' => 'post']);
+        $this->middleware('auth.basic', ['only' => ['store']]);
+        
     }
 
     /**
@@ -88,8 +88,6 @@ class LessonsController extends ApiController
         // need to be authorized to create a lesson
         // if you use authentication, you must use SSL !
 
-        $this->middleware('auth.basic');
-
         if ( ! Input::get('title') or ! Input::get('body')) {
 
             // 400 - bad request (this)
@@ -98,10 +96,14 @@ class LessonsController extends ApiController
 
             // response, number, message
 
-            return $this->setStatusCode(422)->respondWithError('Parameters failed validation for a lesson.');
+            return $this->respondParameterFailed('Parameters failed validation for a lesson.');
 
 
         }
+
+        Lesson::create(Input::all());
+
+        return $this->respondCreated('Lesson successfully created.');
 
         //if ( !$request->get('title') || !$request->get('body') ) {
 

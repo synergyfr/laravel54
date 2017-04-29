@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Response;
+
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -44,6 +46,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+           return Response::json(['error' => ['message' => 'Resource not found']], 404);
+        }
+
+        // dd($exception);
+
         return parent::render($request, $exception);
     }
 

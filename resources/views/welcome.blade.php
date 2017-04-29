@@ -108,7 +108,7 @@
 
 
 
-        @ago($user)
+       {{--  @ago($user) --}}
 
         {{-- @hello --}}
 

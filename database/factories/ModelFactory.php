@@ -32,3 +32,24 @@ $factory->define(App\Lesson::class, function (Faker\Generator $faker) {
 		//'published_at' => $faker->dateTime()
 	];
 });
+
+$factory->define(App\Tag::class, function (Faker\Generator $faker) {
+	return [
+		'name'    	   => $faker->word,
+	];
+});
+
+$factory->define(App\LessonTag::class, function (Faker\Generator $faker) {
+
+	$lessonIds = App\Lesson::pluck('id')->toArray();
+	$tagIds	   = App\Tag::pluck('id')->toArray();
+
+	//DB::table('lesson_tag')->insert([
+
+	//]);
+
+	return [
+		'lesson_id'    	   => $faker->randomElement($lessonIds),
+		'tag_id'		   => $faker->randomElement($tagIds)
+	];
+});

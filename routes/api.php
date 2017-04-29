@@ -21,4 +21,10 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1'], function() {
 	Route::resource('lessons', 'LessonsController');
+
+	Route::resource('tags', 'TagsController', ['only' => ['index','show'] ]);
+
+	// Route::resource('lessons.tags', 'LessonsTagsController'); // lessons/id/tag
+
+	Route::get('lessons/{id}/tags', 'TagsController@index');
 });
