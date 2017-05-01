@@ -48,14 +48,16 @@ class LessonsController extends ApiController
         // 4. if structure changes, could affect all people quering the api
         // 4. No way to signal headers/response codes
 
-        $lessons = \App\Lesson::all();
+        // can do ?limit=5
+        $limit = Input::get('limit') ? : 3;
 
-        // get_class()
-        // get_class_methods()
+        // limit max
+        // page
 
-        // 200 default error code value - set the status code with chain if you want to
-        return $this->respond([
-            'data' => $this->lessonTransformer->transformCollection($lessons->all())
+        $lessons = \App\Lesson::paginate($limit);
+        
+        return $this->respondWithPagination($lessons, [
+            'data' => $this->lessonTransformer->transformCollection($lessons->all());
         ]);
 
     }

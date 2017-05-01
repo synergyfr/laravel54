@@ -84,5 +84,22 @@ class ApiController extends Controller
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_UNPROCESSABLE_ENTITY)->respondWithError($message);
     }
+
+
+    public function respondWithPagination(Paginator $lessons, $data) {
+
+        $data = array_merge($data, [
+            'paginator' => [
+                'total_count'   => $lessons->total(),
+                'total_pages'   => ceil($lessons->total() / $lessons->perPage()),
+                'current_page'  => $lessons->currentPage(),
+                'limit'         => $lessons->perPage()
+            ]
+        ]);
+        
+        
+        return $this->respond($data);
+
+    }
     
 }
